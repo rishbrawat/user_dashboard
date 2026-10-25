@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
-  const { login, demoCredentials } = useAuth();
+  const { login, demoCredentials, theme, toggleTheme } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -50,7 +50,17 @@ export default function Login() {
     <div className="auth-wrapper">
       <div className="auth-box">
         <header className="auth-header">
-          <span className="auth-brand-tag">user_dashboard</span>
+          <div className="auth-top-bar">
+            <span className="auth-brand-tag">user_dashboard</span>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? '○ Light' : '● Dark'}
+            </button>
+          </div>
           <h1 className="auth-title">Sign In</h1>
           <p className="auth-sub">Enter credentials to access account</p>
         </header>

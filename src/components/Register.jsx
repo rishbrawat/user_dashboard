@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Register() {
-  const { register } = useAuth();
+  const { register, theme, toggleTheme } = useAuth();
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
@@ -75,7 +75,17 @@ export default function Register() {
     <div className="auth-wrapper">
       <div className="auth-box">
         <header className="auth-header">
-          <span className="auth-brand-tag">user_dashboard</span>
+          <div className="auth-top-bar">
+            <span className="auth-brand-tag">user_dashboard</span>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? '○ Light' : '● Dark'}
+            </button>
+          </div>
           <h1 className="auth-title">Create Account</h1>
           <p className="auth-sub">Enter details to establish membership</p>
         </header>

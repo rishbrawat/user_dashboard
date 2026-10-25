@@ -17,7 +17,7 @@ const INITIAL_LOGS = [
 ];
 
 export default function Dashboard() {
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, theme, toggleTheme } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [members, setMembers] = useState(INITIAL_MEMBERS);
 
@@ -39,7 +39,7 @@ export default function Dashboard() {
 
   return (
     <div className="app-container">
-      {/* Slim Top Navigation (Minimalist, No cluttered sidebar) */}
+      {/* Slim Top Navigation */}
       <header className="app-nav">
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <div className="app-brand">
@@ -73,6 +73,14 @@ export default function Dashboard() {
         </div>
 
         <div className="nav-user">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="theme-toggle-btn"
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            <span>{theme === 'dark' ? '○ Light' : '● Dark'}</span>
+          </button>
           <span className="user-email-text">{currentUser?.email || 'alex.morgan@example.com'}</span>
           <button
             type="button"

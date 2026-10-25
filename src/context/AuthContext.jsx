@@ -1,9 +1,10 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const AuthContext = createContext(null);
 
 const DEFAULT_USERS_KEY = 'user_dashboard_accounts';
 const CURRENT_USER_KEY = 'user_dashboard_current_user';
+const THEME_KEY = 'user_dashboard_theme';
 
 const INITIAL_DEMO_USER = {
   id: 'usr_01',
@@ -24,6 +25,27 @@ export function AuthProvider({ children }) {
       return INITIAL_DEMO_USER;
     }
   });
+
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem(THEME_KEY) || 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // storage unavailable
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   const getAccounts = useCallback(() => {
     try {
@@ -103,6 +125,8 @@ export function AuthProvider({ children }) {
         login,
         register,
         logout,
+        theme,
+        toggleTheme,
         demoCredentials: {
           email: INITIAL_DEMO_USER.email,
           password: INITIAL_DEMO_USER.password
