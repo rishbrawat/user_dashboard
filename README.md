@@ -1,65 +1,50 @@
 # user_dashboard
 
-A modern, responsive user management and metrics dashboard built with React 19, React Router v7, and custom CSS design system.
+A high-density minimalist user analytics and account portal built with React 19 and React Router v7.
+
+## Design Philosophy
+
+- **Minimalist Palette**: Pure black (`#000000`) and white (`#ffffff`) foundation accented with gold, green, and red indicator states.
+- **Compact Geometry**: Reduced spatial density, 11px–13px typography scale, 30px inputs and controls.
+- **Zero Heavy UI Dependencies**: Completely native DOM styling with vanilla CSS design tokens. No icon pack bloat.
 
 ## Features
 
 - **Authentication System**:
-  - Secure Login view with validation and demo autofill
-  - Registration view with real-time password strength evaluator
-  - Session persistence and protected routing
+  - Compact Login component with credential validation and demo autofill
+  - Registration component with inline password security strength meter
+  - Session persistence and protected client routing
 - **Dashboard Workspace**:
-  - Live metric KPI cards (Revenue, Active Users, Completion Rate, Health)
-  - Team directory table with search, status filtering, and inline management
-  - Audit log activity stream
-  - Add team member modal dialog
-  - Data export to CSV
-- **UI / UX Excellence**:
-  - Theme switching (Light & Dark modes)
-  - WCAG-compliant color contrast and visible focus indicators
-  - Full keyboard accessibility and semantic HTML
-  - Responsive design across mobile, tablet, and desktop
-
-## Tech Stack
-
-- **Framework**: React 19
-- **Routing**: React Router DOM v7
-- **Styling**: Vanilla CSS with custom tokens and glassmorphism utilities
-- **Icons**: Lucide React
-- **Build Tool**: Vite
+  - Key performance metric indicators (Revenue, Members, SLA Uptime, Failure Rate)
+  - Member directory table with active/pending/inactive status toggles and record removal
+  - Realtime system audit logs
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
+- Node.js (v18+)
 - npm or yarn
 
 ### Installation
 
-1. Clone repository:
-```bash
-git clone https://github.com/your-username/user_dashboard.git
-cd user_dashboard
-```
-
-2. Install dependencies:
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Run the development server:
+2. Start local development server:
 ```bash
 npm run dev
 ```
 
-4. Build for production:
+3. Build production bundle:
 ```bash
 npm run build
 ```
 
 ## Demo Credentials
 
-For quick testing on the login screen, click **Auto Fill** or use:
+For testing authentication:
 - **Email**: `alex.morgan@example.com`
 - **Password**: `Password123!`
